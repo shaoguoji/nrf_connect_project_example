@@ -4,9 +4,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(blinky, LOG_LEVEL_INF);
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -41,7 +43,7 @@ int main(void)
 		}
 
 		led_state = !led_state;
-		printf("LED state: %s\n", led_state ? "ON" : "OFF");
+		LOG_INF("LED state: %s", led_state ? "ON" : "OFF");
 		k_msleep(SLEEP_TIME_MS);
 	}
 	return 0;
