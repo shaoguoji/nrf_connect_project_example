@@ -1,0 +1,27 @@
+/*
+ * Devicetree overlay for Seeed XIAO nRF52840 Sense (xiao_ble/nrf52840/sense).
+ *
+ * Applied on top of the board files in
+ *   zephyr/boards/seeed/xiao_ble/xiao_ble_nrf52840_sense.dts
+ *   zephyr/boards/seeed/xiao_ble/xiao_ble_common.dtsi
+ * Check the merged result in build/zephyr/zephyr.dts.
+ *
+ * Board LEDs (active low): led0 = red P0.26, led1 = green P0.30, led2 = blue P0.06
+ *
+ * NOTE: after creating or renaming this file, do a pristine build
+ * (make clean && make) so CMake picks it up.
+ */
+
+/ {
+	aliases {
+		/* Blink the red LED (board default). Use &led1 / &led2 for green / blue. */
+		led0 = &led0;
+	};
+};
+
+/* Example: move led0 to an external LED on a header pin
+ *
+ * &led0 {
+ *	gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+ * };
+ */
